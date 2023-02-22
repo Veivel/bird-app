@@ -1,0 +1,9 @@
+.next/** 
+node_modules/**
+public/**
+.env/**
+.env.example/**
+
+tailwind.config.js
+**.config.js
+**.config.ts
