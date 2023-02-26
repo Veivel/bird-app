@@ -4,65 +4,50 @@
 
 /* ============== Paddings and stuff ============== */
 
-/* main {
-    padding-top: 0rem;
+main {
+    padding-top: 1rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     overflow: hidden;
 }
 
-// sm
 @media (min-width: 640px) {
     main {
-        padding-top: 0rem;
+        padding-top: 2rem;
         padding-left: 6rem;
         padding-right: 6rem;
     }
 }
 
-// md
 @media (min-width: 768px) {
     main {
-        padding-top: 0rem;
+        padding-top: 2rem;
         padding-left: 6rem;
         padding-right: 6rem;
     }
 }
 
-// xl
 @media (min-width: 1280px) {
     main {
-        padding-top: 0rem;
+        padding-top: 3rem;
         padding-left: 12rem;
         padding-right: 12rem;
     }
 }
 
-// 2xl
 @media (min-width: 1536px) {
     main {
         padding-top: 4rem;
-        padding-left: 24rem;
-        padding-right: 24rem;
+        padding-left: 16rem;
+        padding-right: 16rem;
     }
 }
 
-@media (min-width: 2000px) {
-    main {
-        padding-top: 6rem;
-        padding-left: 32rem;
-        padding-right: 32rem;
-    }
-}
 
 body {
-    background-image: url('/bg-2.svg');
-    background-size: cover;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 200;
-    font-size: small;
+    background-color: #01162D;
+    color: white;;
 }
-*/
 
 /* ============== below md =============== */
 
@@ -118,9 +103,6 @@ sub {
 /* ============== XL screens =============== */
 
 @media (min-width: 1280px) {
-    body {
-        font-size: medium;
-    }
     h1 {
         font-size: 3.1rem;
     }
@@ -157,18 +139,3 @@ ul {
 }
 
 /* Links, Images, etc. */
-
-Link,
-a {
-    color: cornflowerblue;
-}
-
-Link,
-a:hover {
-    color: rgb(127, 172, 255);
-}
-
-Link,
-a:active {
-    color: blue;
-}

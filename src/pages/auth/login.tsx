@@ -12,6 +12,9 @@ import { toast, Toaster } from 'react-hot-toast'
 import { InteractionContext } from '../../components/context/InteractionContext'
 import secureLocalStorage from 'react-secure-storage'
 import { useRouter } from 'next/router';
+import GoogleIcon from '@mui/icons-material/Google';
+import Link from 'next/link'
+import { USER_AUTH } from '../../utils/types/user';
 
 export default function LoginPage(): JSX.Element {
     const router = useRouter();
@@ -19,20 +22,31 @@ export default function LoginPage(): JSX.Element {
 
     function handleFormSubmit(e: BaseSyntheticEvent) {
         e.preventDefault()
-        axios
-            .post('/auth/login', {
-                username: e.target.username.value,
-                password: e.target.password.value,
-                remember_me: e.target.remember_me.value === 'on' ? true : false,
-            })
+        const userpromise = signUser({
+            username: e.target.username.value,
+            password: e.target.password.value,
+            remember_me: e.target.remember_me.checked,
+        });
+
+        toast.promise(userpromise, {
+            loading: "Logging you in...",
+            success: "Succesfully logged in",
+            error: (err) => err.response.data.message,
+        })
+    }
+
+    async function signUser(body: USER_AUTH) {
+        return axios
+            .post('/auth/login', body)
             .then((res) => res.data)
             .then((data) => {
-                toast.success(data.message)
                 setToken(data.token)
                 secureLocalStorage.setItem('token', data.token)
             })
-            .catch((err) => console.log(err))
-    }
+            .catch((err) => {
+                throw err
+            })
+    } 
 
     function handleGoogleOAuth(e : BaseSyntheticEvent) {
         e.preventDefault();
@@ -44,8 +58,9 @@ export default function LoginPage(): JSX.Element {
         <>
             <main>
                 <h1>Login</h1>
+                <Label color={"black"}>You need to login before viewing content on the site!</Label>
                 {/* Handling forms the old fashioned way (no states) */}
-                <form onSubmit={handleFormSubmit}>
+                <form onSubmit={handleFormSubmit} className="flex flex-col gap-y-2">
                     <TextInput
                         id="username"
                         type="text"
@@ -58,12 +73,19 @@ export default function LoginPage(): JSX.Element {
                         placeholder="Password"
                         required={true}
                     />
-                    <Checkbox id="remember_me" />
-                    <Label htmlFor="remember_me">Remember Me</Label>
-                    <Button type="submit">Submit</Button>
-                    <Button type="button" outline={true} onClick={handleGoogleOAuth}>
-                        Login with Google
-                    </Button>
+                    <div>
+                        <Checkbox id="remember_me" />
+                        <Label htmlFor="remember_me" color={"black"}>Remember Me</Label>
+                    </div>
+                    <div className='flex w-full my-8'>
+                        <Button type="submit" className='w-full'>Submit</Button>
+                    </div>
+                    <div className='text-center mx-auto my-8'>
+                        <Label color={"black"}>OR: </Label>
+                        <Button type="button" outline={true} onClick={handleGoogleOAuth} className='mx-auto'>
+                            <GoogleIcon />Login with Google
+                        </Button>
+                    </div>
                 </form>
             </main>
         </>

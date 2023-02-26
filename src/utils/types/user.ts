@@ -17,6 +17,7 @@ export interface USER {
 
 export interface USER_AUTH {
     username: string
-    email: string
-    remember_me: boolean
+    password: string
+    remember_me?: boolean
+    email?: string
 }

@@ -1,4 +1,5 @@
 export interface POST {
+    index?: number
     uuid: string
     text: string
     author: string
@@ -8,6 +9,7 @@ export interface POST {
     likes: number
     comments: COMMENT[]
     is_edited?: boolean // todo
+    editable?: boolean
 }
 
 export interface COMMENT {
