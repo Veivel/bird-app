@@ -35,7 +35,6 @@ export default function PostTweet({ onNewPost }: POST_TWEET_PROPS):JSX.Element {
 
     function handleFormChange(e: BaseSyntheticEvent) {
         e.preventDefault();
-        console.log(e)
         if (e.target.name === 'text') {
             setData({...data, text: e.target.value})
         } else {

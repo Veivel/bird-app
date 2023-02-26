@@ -48,7 +48,9 @@ export default function HomeFeedContainer(): JSX.Element {
     if (token && !posts && pageNum === 1) {
         fetchPosts(pageNum)
             .then(data => setPageNum(2))
-            .catch(err => router.push("/auth/login"))
+            .catch(err => {
+                router.push("/auth/login")
+            })
     }
 
     function fetchMorePosts() {

@@ -31,7 +31,7 @@ export default function LoginPage(): JSX.Element {
         toast.promise(userpromise, {
             loading: "Logging you in...",
             success: "Succesfully logged in",
-            error: (err) => err.response.data.message,
+            error: "Could not log in.",
         })
     }
 

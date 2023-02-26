@@ -26,7 +26,6 @@ export const UserProvider: React.FC<any> = ({children}) => {
                 .catch(err => {
                     setIsLoaded(true)
                     setProfile(null)
-                    console.log(err)
                 })
         } else {
             setProfile(null);
