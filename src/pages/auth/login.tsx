@@ -11,13 +11,13 @@ import { BaseSyntheticEvent, FormEvent, useState, useContext } from 'react'
 import { toast, Toaster } from 'react-hot-toast'
 import { InteractionContext } from '../../components/context/InteractionContext'
 import secureLocalStorage from 'react-secure-storage'
-import { useRouter } from 'next/router';
-import GoogleIcon from '@mui/icons-material/Google';
+import { useRouter } from 'next/router'
+import GoogleIcon from '@mui/icons-material/Google'
 import Link from 'next/link'
-import { USER_AUTH } from '../../utils/types/user';
+import { USER_AUTH } from '../../utils/types/user'
 
 export default function LoginPage(): JSX.Element {
-    const router = useRouter();
+    const router = useRouter()
     const { setToken } = useContext(InteractionContext)
 
     function handleFormSubmit(e: BaseSyntheticEvent) {
@@ -26,12 +26,12 @@ export default function LoginPage(): JSX.Element {
             username: e.target.username.value,
             password: e.target.password.value,
             remember_me: e.target.remember_me.checked,
-        });
+        })
 
         toast.promise(userpromise, {
-            loading: "Logging you in...",
-            success: "Succesfully logged in",
-            error: "Could not log in.",
+            loading: 'Logging you in...',
+            success: 'Succesfully logged in',
+            error: 'Could not log in.',
         })
     }
 
@@ -46,10 +46,10 @@ export default function LoginPage(): JSX.Element {
             .catch((err) => {
                 throw err
             })
-    } 
+    }
 
-    function handleGoogleOAuth(e : BaseSyntheticEvent) {
-        e.preventDefault();
+    function handleGoogleOAuth(e: BaseSyntheticEvent) {
+        e.preventDefault()
 
         router.push(`${process.env.NEXT_PUBLIC_API_URL}/auth/oauth2/google`)
     }
@@ -58,9 +58,14 @@ export default function LoginPage(): JSX.Element {
         <>
             <main>
                 <h1>Login</h1>
-                <Label color={"black"}>You need to login before viewing content on the site!</Label>
+                <Label color={'black'}>
+                    You need to login before viewing content on the site!
+                </Label>
                 {/* Handling forms the old fashioned way (no states) */}
-                <form onSubmit={handleFormSubmit} className="flex flex-col gap-y-2">
+                <form
+                    onSubmit={handleFormSubmit}
+                    className="flex flex-col gap-y-2"
+                >
                     <TextInput
                         id="username"
                         type="text"
@@ -75,15 +80,25 @@ export default function LoginPage(): JSX.Element {
                     />
                     <div>
                         <Checkbox id="remember_me" />
-                        <Label htmlFor="remember_me" color={"black"}>Remember Me</Label>
+                        <Label htmlFor="remember_me" color={'black'}>
+                            Remember Me
+                        </Label>
                     </div>
-                    <div className='flex w-full my-8'>
-                        <Button type="submit" className='w-full'>Submit</Button>
+                    <div className="flex w-full my-8">
+                        <Button type="submit" className="w-full">
+                            Submit
+                        </Button>
                     </div>
-                    <div className='text-center mx-auto my-8'>
-                        <Label color={"black"}>OR: </Label>
-                        <Button type="button" outline={true} onClick={handleGoogleOAuth} className='mx-auto'>
-                            <GoogleIcon />Login with Google
+                    <div className="text-center mx-auto my-8">
+                        <Label color={'black'}>OR: </Label>
+                        <Button
+                            type="button"
+                            outline={true}
+                            onClick={handleGoogleOAuth}
+                            className="mx-auto"
+                        >
+                            <GoogleIcon />
+                            Login with Google
                         </Button>
                     </div>
                 </form>

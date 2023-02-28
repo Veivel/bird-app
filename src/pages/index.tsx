@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { HomeFeedContext, HOME_FEED, HomeFeedProvider } from '../components/context/HomeFeedContext';
-import HomeFeedContainer from '@/components/containers/HomeFeedContainer';
+import {
+    HomeFeedContext,
+    HOME_FEED,
+    HomeFeedProvider,
+} from '../components/context/HomeFeedContext'
+import HomeFeedContainer from '@/components/containers/HomeFeedContainer'
 
 export default function Home() {
     return (

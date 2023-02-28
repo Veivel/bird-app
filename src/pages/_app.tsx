@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <UserProvider>
                     <HomeFeedProvider>
                         <NavigationBar />
-                        <main className='min-h-[75vh]'>
+                        <main className="min-h-[75vh]">
                             <Toaster />
                             <Component {...pageProps} />
                         </main>

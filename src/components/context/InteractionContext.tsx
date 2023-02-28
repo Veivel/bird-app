@@ -10,7 +10,7 @@ export const InteractionContext = createContext<any>({})
 export const InteractionProvider: React.FC<any> = ({ children }) => {
     const router = useRouter()
     const [token, setToken] = useState<string>('')
-    
+
     axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
     // axios.defaults.headers["Cache-Control"] = "no-cache";
 

@@ -4,9 +4,9 @@ import { BaseSyntheticEvent, FormEvent, useState, useContext } from 'react'
 import { toast } from 'react-hot-toast'
 import { InteractionContext } from '../../components/context/InteractionContext'
 import secureLocalStorage from 'react-secure-storage'
-import { USER_AUTH } from '../../utils/types/user';
-import { useRouter } from 'next/router';
-import GoogleIcon from '@mui/icons-material/Google';
+import { USER_AUTH } from '../../utils/types/user'
+import { useRouter } from 'next/router'
+import GoogleIcon from '@mui/icons-material/Google'
 import Link from 'next/link'
 
 export default function LoginPage(): JSX.Element {
@@ -24,7 +24,7 @@ export default function LoginPage(): JSX.Element {
             loading: 'Registering user...',
             success: 'Successfully registered user. You may now login.',
             error: 'Error registering user.',
-         })
+        })
     }
 
     async function registerUser(body: USER_AUTH) {
@@ -44,7 +44,10 @@ export default function LoginPage(): JSX.Element {
         <>
             <main>
                 <h1>Sign Up</h1>
-                <form onSubmit={handleFormSubmit} className="flex flex-col gap-y-2">
+                <form
+                    onSubmit={handleFormSubmit}
+                    className="flex flex-col gap-y-2"
+                >
                     <TextInput
                         id="email"
                         type="email"
@@ -63,13 +66,21 @@ export default function LoginPage(): JSX.Element {
                         placeholder="Password"
                         required={true}
                     />
-                    <div className='flex w-full my-4'>
-                        <Button type="submit" className='w-full'>Submit</Button>
+                    <div className="flex w-full my-4">
+                        <Button type="submit" className="w-full">
+                            Submit
+                        </Button>
                     </div>
-                    <div className='text-center mx-auto my-8'>
-                        <Label color={"black"}>OR:</Label>
-                        <Button className="mx-auto" type="button" outline={true} onClick={handleGoogleAuth}>
-                            <GoogleIcon className='h-[20px]'/> <span className='ml-1'>Sign Up with Google</span>
+                    <div className="text-center mx-auto my-8">
+                        <Label color={'black'}>OR:</Label>
+                        <Button
+                            className="mx-auto"
+                            type="button"
+                            outline={true}
+                            onClick={handleGoogleAuth}
+                        >
+                            <GoogleIcon className="h-[20px]" />{' '}
+                            <span className="ml-1">Sign Up with Google</span>
                         </Button>
                     </div>
                 </form>

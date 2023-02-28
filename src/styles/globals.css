@@ -6,8 +6,8 @@
 
 main {
     padding-top: 1rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     overflow: hidden;
 }
 
@@ -43,10 +43,9 @@ main {
     }
 }
 
-
 body {
-    background-color: #01162D;
-    color: white;;
+    background-color: #01162d;
+    color: white;
 }
 
 /* ============== below md =============== */

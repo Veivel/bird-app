@@ -1,4 +1,3 @@
-
 export interface USER_PROFILE {
     username: string
     email: string
